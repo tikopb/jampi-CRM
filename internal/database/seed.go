@@ -9,5 +9,9 @@ import (
 func seedDB(db *gorm.DB) {
 	db.AutoMigrate(
 		&model.User{},
+		&model.Costumer{},
+		&model.Checkup{},
+		&model.Point{},
+		&model.Voucher{},
 	)
 }
