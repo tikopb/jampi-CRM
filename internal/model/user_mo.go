@@ -1,6 +1,10 @@
 package model
 
-import "time"
+import (
+	"time"
+
+	"github.com/google/uuid"
+)
 
 type User struct {
 	ID        string    `gorm:"primaryKey;autoIncrement" json:"-"`
@@ -9,6 +13,7 @@ type User struct {
 	FullName  string    `gorm:"column:full_name" json:"full_name"`
 	CreatedAt time.Time `gorm:"column:created_at;default:CURRENT_TIMESTAMP" json:"created_at"`
 	IsActive  bool      `gorm:"column:isactive" json:"isactive"`
+	UUID      uuid.UUID `gorm:"type:uuid;default:uuid_generate_v4();index:idx_user_uuid"`
 }
 
 type RegisterRequest struct {
